@@ -1,4 +1,9 @@
 import { resolve } from 'path';
+import dotenv from 'dotenv';
+
+const env = dotenv.config().parsed;
+
+console.log(env);
 
 const config = {
   port: 80,
