@@ -1,24 +1,11 @@
 import http from 'http';
 import cors from 'cors';
 import express from 'express';
-import { resolve, join } from 'path';
+import { join } from 'path';
 import { Sequelize } from 'sequelize';
 import sizeOf from 'image-size';
-
+import config from './config';
 import PhotoModel from './models/photo.model';
-
-const config = {
-  port: 3001,
-  uploadDir: `${resolve(__dirname, '..')}/uploads/`,
-  database: {
-    username: 'artwork_photos',
-    password: '1234',
-    host: 'localhost',
-    port: '3306',
-    dialect: 'mysql',
-    database: 'artwork_portfolio_schema',
-  },
-};
 
 const app = express();
 
@@ -61,7 +48,7 @@ database.sync().then(() => {
   });
 });
 
-app.server.listen(process.env.PORT || config.port, () => {
+app.server.listen(process.env.CLEARDB_PORT || config.port, () => {
   // eslint-disable-next-line no-console
   console.log(`Started on port ${app.server.address().port}`);
 });
