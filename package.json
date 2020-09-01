@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Artwork portfolio server api",
   "main": "src/index.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "start": "SET NODE_ENV=development&nodemon --exec babel-node src/index.js",
     "deploy": "git push heroku master",
