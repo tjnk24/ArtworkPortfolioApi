@@ -1,0 +1,1 @@
+web: SET NODE_ENV=development&nodemon --exec babel-node src/index.js
