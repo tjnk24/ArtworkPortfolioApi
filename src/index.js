@@ -48,7 +48,9 @@ database.sync().then(() => {
   });
 });
 
-app.server.listen(config.port, () => {
+console.log('жиесь');
+
+app.server.listen(process.env.PORT || config.port, () => {
   // eslint-disable-next-line no-console
   console.log(`Started on port ${app.server.address().port}`);
 });
