@@ -3,6 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import { join } from 'path';
 import { Sequelize } from 'sequelize';
+import sizeOf from 'image-size';
 import config from './config';
 import PhotoModel from './models/photo.model';
 
@@ -29,9 +30,15 @@ database.sync().then(() => {
       count: photoDbData.count,
     };
 
-    photos.rows = photoDbData.rows.map((photo) => ({
-      dataValues: photo.dataValues,
-    }));
+    photos.rows = photoDbData.rows.map((photo) => {
+      const imgProps = sizeOf(`uploads/${photo.dataValues.filename}`);
+
+      return {
+        width: imgProps.width,
+        height: imgProps.height,
+        dataValues: photo.dataValues,
+      };
+    });
 
     res.send({ success: true, photos });
   });
