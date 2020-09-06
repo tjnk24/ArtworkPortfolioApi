@@ -2,8 +2,7 @@ import { resolve } from 'path';
 import dotenv from 'dotenv';
 
 if (process.env.NODE_ENV === 'development') {
-  const env = dotenv.config().parsed;
-  console.log(env);
+  dotenv.config();
 }
 
 const config = {
