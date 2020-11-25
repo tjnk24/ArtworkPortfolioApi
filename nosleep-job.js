@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-fetch('https://artwork-portfolio-app.herokuapp.com/ping', {
+fetch('https://artworks-portfolio-api.herokuapp.com/ping', {
   method: 'POST',
   body: 'no sleep till brooklin',
 })
